@@ -35,6 +35,6 @@ Allowed values for `TemperatureUnit` are: `F`, `Fahrenheit`, `C` and `Celsius`. 
 If no valid value can be found, it will default to `C`
 
 ## Notes
-Built, run & tested using dotnet version `8.0.302`
+- Built, run & tested using dotnet version `8.0.302`
 
 - I wasn't sure what the number of records per hour should be, so stuck with 6. This is something I would have clarified if this was a real world scenario.
