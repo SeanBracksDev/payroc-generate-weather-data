@@ -1,9 +1,9 @@
 ﻿namespace GenerateWeatherData;
 
-class GenerateWeatherData
+class PayrocGenerateWeatherData
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
+
     }
 }

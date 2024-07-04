@@ -1,6 +1,6 @@
 namespace GenerateWeatherData.Tests;
 
-public class GenerateWeatherDataTest
+public class PayrocGenerateWeatherDataTest
 {
     [Fact]
     public void Test1()
