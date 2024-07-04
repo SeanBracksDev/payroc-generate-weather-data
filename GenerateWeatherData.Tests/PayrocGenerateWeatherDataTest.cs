@@ -30,5 +30,4 @@ namespace GenerateWeatherData.Tests
             Assert.True(int.TryParse(weatherDataEntryParts[7], out int _));
         }
     }
-
 }

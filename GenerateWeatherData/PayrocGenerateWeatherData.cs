@@ -46,6 +46,5 @@ public class PayrocGenerateWeatherData
 
             currDatetime = currDatetime.AddHours(1);
         }
-
     }
 }
