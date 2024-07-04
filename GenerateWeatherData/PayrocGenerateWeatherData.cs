@@ -2,9 +2,9 @@
 
 public class PayrocGenerateWeatherData
 {
-    static readonly string[] Directions = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
-    const string TemperatureUnit = "C"; // TODO: Make this configurable - Celsius/Fahrenheit
-    const string WindSpeedUnit = "km/h";
+    public static readonly string[] Directions = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
+    public const string TemperatureUnit = "C"; // TODO: Make this configurable - Celsius/Fahrenheit
+    public const string WindSpeedUnit = "km/h";
 
     static void Main(string[] args)
     {
