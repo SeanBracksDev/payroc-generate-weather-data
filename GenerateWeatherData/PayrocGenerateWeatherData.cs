@@ -5,11 +5,11 @@ using Microsoft.Extensions.Configuration;
 public class PayrocGenerateWeatherData
 {
     public static readonly string[] Directions = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
-    public static string? temperatureUnit; // TODO: Make this configurable - Celsius/Fahrenheit
+    public static string? temperatureUnit = "C"; // Default is C/Celsius
     public const string WindSpeedUnit = "km/h";
     static void Main(string[] args)
     {
-        LoadConfiguration();
+        LoadConfiguration(new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json", optional: true).Build());
 
         // TODO: Dummy dates to test for now, replace with actual dates
         DateTime startDatetime = new(2024, 6, 1, 0, 0, 0, DateTimeKind.Utc);
@@ -17,18 +17,13 @@ public class PayrocGenerateWeatherData
         GenerateWeatherDataFile(startDatetime, endDatetime, "weather_data.wis");
     }
 
-    public static void LoadConfiguration()
+    public static void LoadConfiguration(IConfigurationRoot config)
     {
-        IConfigurationRoot config = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json", optional: true).Build();
         temperatureUnit = config["AppSettings:TemperatureUnit"];
 
         if (temperatureUnit == "Fahrenheit")
         {
             temperatureUnit = "F";
-        }
-        if (temperatureUnit == "Celsius")
-        {
-            temperatureUnit = "C";
         }
 
         // if no valud valid temperature unit provied or F/Fahrenheit not specified, default to Celsius
