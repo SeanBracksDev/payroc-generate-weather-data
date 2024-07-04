@@ -23,7 +23,7 @@ namespace GenerateWeatherData.Tests
             Assert.True(double.TryParse(weatherDataEntryParts[0], out double _));
             Assert.True(double.TryParse(weatherDataEntryParts[1], out double _));
             Assert.True(double.TryParse(weatherDataEntryParts[2], out double _));
-            Assert.Equal(PayrocGenerateWeatherData.TemperatureUnit, weatherDataEntryParts[3]);
+            Assert.Equal(PayrocGenerateWeatherData.temperatureUnit, weatherDataEntryParts[3]);
             Assert.True(double.TryParse(weatherDataEntryParts[4], out double _));
             Assert.Equal(PayrocGenerateWeatherData.WindSpeedUnit, weatherDataEntryParts[5]);
             Assert.Contains(weatherDataEntryParts[6], PayrocGenerateWeatherData.Directions);
