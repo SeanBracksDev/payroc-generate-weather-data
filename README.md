@@ -15,3 +15,6 @@ Sample output:
 ```bash
 dotnet test
 ```
+
+## Notes
+Built, run & tested using dotnet version `8.0.302`
