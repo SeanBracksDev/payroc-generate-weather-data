@@ -30,7 +30,7 @@ public class PayrocGenerateWeatherData
         string windDirection = Directions[random.Next(Directions.Length)];
         int precipitation = (int)GenerateRandomDouble(0, 100);
 
-        return $"{longitude:F6}\t{latitude:F6}\t{temperature:F1}\t{TemperatureUnit}\t{windSpeed:F1}\t{WindSpeedUnit}\t{windDirection}\t{precipitation}"
+        return $"{longitude:F6}\t{latitude:F6}\t{temperature:F1}\t{TemperatureUnit}\t{windSpeed:F1}\t{WindSpeedUnit}\t{windDirection}\t{precipitation}";
     }
 
     public static void GenerateWeatherData(DateTime startDatetime, DateTime endDatetime, string outputFilePath)
@@ -42,7 +42,7 @@ public class PayrocGenerateWeatherData
         while (currDatetime < endDatetime)
         {
             outputFile.WriteLine($"{currDatetime.ToUniversalTime():yyyy-MM-dd HH:mmUTC}");
-            outputFile.WriteLine();
+            outputFile.WriteLine(GenerateWeatherDataEntry());
 
             currDatetime = currDatetime.AddHours(1);
         }
