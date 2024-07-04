@@ -46,5 +46,6 @@ public class PayrocGenerateWeatherData
 
             currDatetime = currDatetime.AddHours(1);
         }
+        Console.WriteLine($"{(endDatetime - startDatetime).TotalDays} day(s) of weather data generated in file: '{outputFilePath}'");
     }
 }
