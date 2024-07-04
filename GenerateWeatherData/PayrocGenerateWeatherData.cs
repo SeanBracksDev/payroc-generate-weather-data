@@ -11,7 +11,7 @@ public class PayrocGenerateWeatherData
         // TODO: Dummy dates to test for now, replace with actual dates
         DateTime startDatetime = new(2024, 6, 1, 0, 0, 0, DateTimeKind.Utc);
         DateTime endDatetime = startDatetime.AddDays(1);
-        GenerateWeatherData(startDatetime, endDatetime, "weather_data.wis");
+        GenerateWeatherDataFile(startDatetime, endDatetime, "weather_data.wis");
     }
 
     public static double GenerateRandomDouble(double min, double max)
@@ -33,7 +33,7 @@ public class PayrocGenerateWeatherData
         return $"{longitude:F6}\t{latitude:F6}\t{temperature:F1}\t{TemperatureUnit}\t{windSpeed:F1}\t{WindSpeedUnit}\t{windDirection}\t{precipitation}";
     }
 
-    public static void GenerateWeatherData(DateTime startDatetime, DateTime endDatetime, string outputFilePath)
+    public static void GenerateWeatherDataFile(DateTime startDatetime, DateTime endDatetime, string outputFilePath)
     {
         DateTime currDatetime = startDatetime;
 
