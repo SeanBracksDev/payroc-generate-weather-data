@@ -21,6 +21,11 @@ public class PayrocGenerateWeatherData
     {
         temperatureUnit = config["AppSettings:TemperatureUnit"];
 
+        if (temperatureUnit == "Celsius")
+        {
+            temperatureUnit = "C";
+        }
+
         if (temperatureUnit == "Fahrenheit")
         {
             temperatureUnit = "F";
