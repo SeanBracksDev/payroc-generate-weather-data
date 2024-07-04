@@ -16,5 +16,25 @@ Sample output:
 dotnet test
 ```
 
+## Config
+An `appsettings.json` file can be provided for specifying the Temperature Unit to use.
+
+> `appsettings.json` must be within the same directory you run the project from.
+
+e.g
+```json
+{    
+    "AppSettings": {
+        "TemperatureUnit": "fahrenheit"
+    }
+}
+```
+
+Allowed values for `TemperatureUnit` are: `F`, `Fahrenheit`, `C` and `Celsius`. (Case insensitive)
+
+If no valid value can be found, it will default to `C`
+
 ## Notes
 Built, run & tested using dotnet version `8.0.302`
+
+- I wasn't sure what the number of records per hour should be, so stuck with 6. This is something I would have clarified if this was a real world scenario.
