@@ -1,3 +1,5 @@
+using Microsoft.Extensions.Configuration;
+
 namespace GenerateWeatherData.Tests
 {
     public class PayrocGenerateWeatherDataTest
@@ -42,6 +44,48 @@ namespace GenerateWeatherData.Tests
             Assert.True(File.Exists(outputFilePath));
 
             File.Delete(outputFilePath);
+        }
+
+        [Fact]
+        public void TestLoadConfiguration_TemperatureUnit_Fahrenheit()
+        {
+            var configBuilder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", optional: true)
+                .AddInMemoryCollection(new Dictionary<string, string> { { "AppSettings:TemperatureUnit", "Fahrenheit" } });
+            var config = configBuilder.Build();
+
+            PayrocGenerateWeatherData.LoadConfiguration(config);
+
+            Assert.Equal("F", PayrocGenerateWeatherData.temperatureUnit);
+        }
+
+        [Fact]
+        public void TestLoadConfiguration_TemperatureUnit_Celsius()
+        {
+            var configBuilder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", optional: true)
+                .AddInMemoryCollection(new Dictionary<string, string> { { "AppSettings:TemperatureUnit", "Celsius" } });
+            var config = configBuilder.Build();
+
+            PayrocGenerateWeatherData.LoadConfiguration(config);
+
+            Assert.Equal("C", PayrocGenerateWeatherData.temperatureUnit);
+        }
+
+        [Fact]
+        public void TestLoadConfiguration_TemperatureUnit_Invalid()
+        {
+            var configBuilder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", optional: true)
+                .AddInMemoryCollection(new Dictionary<string, string> { { "AppSettings:TemperatureUnit", "asdkljdaslkj" } });
+            var config = configBuilder.Build();
+
+            PayrocGenerateWeatherData.LoadConfiguration(config);
+
+            Assert.Equal("C", PayrocGenerateWeatherData.temperatureUnit);
         }
     }
 }
