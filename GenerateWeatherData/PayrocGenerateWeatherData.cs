@@ -12,9 +12,9 @@ public class PayrocGenerateWeatherData
         IConfigurationRoot config = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json", optional: true).Build();
         LoadConfiguration(config);
 
-        // TODO: Dummy dates to test for now, replace with actual dates
-        DateTime startDatetime = new(2024, 6, 1, 0, 0, 0, DateTimeKind.Utc);
-        DateTime endDatetime = startDatetime.AddDays(1);
+        DateTime now = DateTime.UtcNow;
+        DateTime startDatetime = now.AddDays(-7);
+        DateTime endDatetime = now;
         GenerateWeatherDataFile(startDatetime, endDatetime, "weather_data.wis");
     }
 
