@@ -1,6 +1,6 @@
 ﻿namespace GenerateWeatherData;
 
-class PayrocGenerateWeatherData
+public class PayrocGenerateWeatherData
 {
     static readonly string[] Directions = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
     const string TemperatureUnit = "C"; // TODO: Make this configurable - Celsius/Fahrenheit
