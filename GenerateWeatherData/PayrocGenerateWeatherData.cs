@@ -13,6 +13,7 @@ public class PayrocGenerateWeatherData
         LoadConfiguration(config);
 
         DateTime now = DateTime.UtcNow;
+        now = now.Date.AddHours(now.Hour); // Round datetime down to whole hour (e.g. 2024-07-04 14:00:00 instead of 2024-07-04 12:53:45)
         DateTime startDatetime = now.AddDays(-7);
         DateTime endDatetime = now;
         GenerateWeatherDataFile(startDatetime, endDatetime, "weather_data.wis");
