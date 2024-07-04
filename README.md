@@ -3,6 +3,11 @@
 ## Running the app
 
 ```bash
+git clone https://github.com/SeanBracksDev/payroc-generate-weather-data
+cd payroc-generate-weather-data
+```
+
+```bash
 dotnet run --project GenerateWeatherData
 ```
 
