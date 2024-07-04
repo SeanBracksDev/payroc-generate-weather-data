@@ -73,7 +73,11 @@ public class PayrocGenerateWeatherData
         while (currDatetime < endDatetime)
         {
             outputFile.WriteLine($"{currDatetime.ToUniversalTime():yyyy-MM-dd HH:mmUTC}");
-            outputFile.WriteLine(GenerateWeatherDataEntry());
+
+            for (int i = 0; i < 6; i++) // Unsure what the number of entries per hour should be, so I'm using the number from the first example given. This could be made to be configurable?
+            {
+                outputFile.WriteLine(GenerateWeatherDataEntry());
+            }
 
             currDatetime = currDatetime.AddHours(1);
         }
