@@ -9,7 +9,8 @@ public class PayrocGenerateWeatherData
     public const string WindSpeedUnit = "km/h";
     static void Main(string[] args)
     {
-        LoadConfiguration(new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json", optional: true).Build());
+        IConfigurationRoot config = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json", optional: true).Build();
+        LoadConfiguration(config);
 
         // TODO: Dummy dates to test for now, replace with actual dates
         DateTime startDatetime = new(2024, 6, 1, 0, 0, 0, DateTimeKind.Utc);
@@ -21,18 +22,23 @@ public class PayrocGenerateWeatherData
     {
         temperatureUnit = config["AppSettings:TemperatureUnit"];
 
-        if (temperatureUnit == "Celsius")
+        if (temperatureUnit == null)
+        {
+            Console.WriteLine("No temperature unit provided, defaulting to C (Celsius)");
+            temperatureUnit = "C";
+        }
+        else if (temperatureUnit.Equals("celsius", StringComparison.CurrentCultureIgnoreCase)
+            || temperatureUnit.Equals("c", StringComparison.CurrentCultureIgnoreCase))
         {
             temperatureUnit = "C";
         }
-
-        if (temperatureUnit == "Fahrenheit")
+        else if (temperatureUnit.Equals("fahrenheit", StringComparison.CurrentCultureIgnoreCase)
+            || temperatureUnit.Equals("f", StringComparison.CurrentCultureIgnoreCase))
         {
             temperatureUnit = "F";
         }
-
-        // if no valud valid temperature unit provied or F/Fahrenheit not specified, default to Celsius
-        if (temperatureUnit != "F" && temperatureUnit != "C")
+        // if no valud valid temperature unit provied set to C
+        else if (temperatureUnit != "F" && temperatureUnit != "C")
         {
             Console.WriteLine("Invalid temperature unit provided, defaulting to C (Celsius)");
             temperatureUnit = "C";
