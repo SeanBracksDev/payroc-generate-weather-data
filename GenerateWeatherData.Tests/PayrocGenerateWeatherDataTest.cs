@@ -29,5 +29,19 @@ namespace GenerateWeatherData.Tests
             Assert.Contains(weatherDataEntryParts[6], PayrocGenerateWeatherData.Directions);
             Assert.True(int.TryParse(weatherDataEntryParts[7], out int _));
         }
+
+        [Fact]
+        public void TestGenerateWeatherFileData()
+        {
+            DateTime startDatetime = new(2024, 6, 1, 0, 0, 0, DateTimeKind.Utc);
+            DateTime endDatetime = startDatetime.AddDays(1);
+            string outputFilePath = "weather_data.wis";
+
+            PayrocGenerateWeatherData.GenerateWeatherDataFile(startDatetime, endDatetime, outputFilePath);
+
+            Assert.True(File.Exists(outputFilePath));
+
+            File.Delete(outputFilePath);
+        }
     }
 }
